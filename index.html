@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menerjemahkan Gelombang ke Visual - Aksesibilitas Web Inklusif</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1931;--blue:#185ADB;--light:#E8F0FE;--yellow:#FFC947;--green:#0ABF7A}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#FCFDFF;color:#1a202c;line-height:1.8;scroll-behavior:smooth}
+header{position:sticky;top:0;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);z-index:1000;border-bottom:1px solid #e2e8f0;padding:14px 6%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;color:var(--navy);font-size:1.2em}
+.logo span{color:var(--blue)}
+nav{display:flex;gap:20px}
+nav a{font-weight:600;color:#475569;font-size:0.9em;text-decoration:none}
+.hero{background:linear-gradient(135deg,#0A1931 0%,#185ADB 100%);color:white;padding:90px 6% 80px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;align-items:center}
+.hero h1{font-size:3.2em;line-height:1.15;font-weight:800}
+.hero h1 em{color:var(--yellow);font-style:normal}
+.hero p{margin-top:20px;font-size:1.15em;opacity:0.9;max-width:600px}
+.badges{margin-top:25px;display:flex;gap:10px;flex-wrap:wrap}
+.badge{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);padding:8px 14px;border-radius:100px;font-size:0.85em}
+.btn{margin-top:30px;display:inline-block;background:white;color:var(--navy);padding:14px 28px;border-radius:12px;font-weight:700;text-decoration:none;box-shadow:0 10px 20px rgba(0,0,0,0.15)}
+.btn.sec{background:var(--yellow);color:var(--navy);margin-left:12px}
+.hero-visual{background:rgba(255,255,255,0.08);border-radius:24px;padding:30px;border:1px solid rgba(255,255,255,0.15);text-align:center}
+.wave{display:flex;justify-content:center;gap:6px;align-items:end;height:120px;margin:20px 0}
+.bar{width:12px;background:linear-gradient(to top,var(--yellow),white);border-radius:6px;animation:wave 1s infinite ease-in-out}
+@keyframes wave{0%,100%{height:20px}50%{height:100px}}
+.bar:nth-child(2){animation-delay:.1s}.bar:nth-child(3){animation-delay:.2s}.bar:nth-child(4){animation-delay:.3s}.bar:nth-child(5){animation-delay:.4s}.bar:nth-child(6){animation-delay:.5s}
+section{padding:70px 6%}
+.section-title{font-size:2.2em;color:var(--navy);font-weight:800;margin-bottom:10px}
+.sub{color:#64748b;margin-bottom:35px;max-width:700px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.card{background:white;border-radius:20px;padding:28px;border:1px solid #e2e8f0;box-shadow:0 10px 30px rgba(10,25,49,0.04)}
+.card .icon{width:48px;height:48px;border-radius:12px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:1.5em;margin-bottom:16px}
+.card h3{color:var(--navy);margin-bottom:10px}
+.challenge{background:#FFF7ED;border:1px solid #FFEDD5}
+.code-box{background:#0F172A;color:#E2E8F0;border-radius:16px;padding:24px;overflow:auto;margin-top:20px;font-family:monospace;font-size:0.9em}
+.demo-player{background:#0F172A;border-radius:20px;overflow:hidden;margin-top:25px}
+.demo-top{display:flex;justify-content:space-between;padding:14px 20px;background:#1e293b;color:#94a3b8;font-size:0.85em}
+.demo-body{padding:40px;text-align:center;color:white}
+.cc-bubble{display:inline-block;background:rgba(0,0,0,0.7);border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:8px;margin-top:15px}
+.timeline{border-left:3px solid var(--light);padding-left:30px;margin-left:10px}
+.tl-item{position:relative;margin-bottom:35px}
+.tl-item::before{content:'';position:absolute;left:-38px;top:4px;width:16px;height:16px;background:var(--blue);border:4px solid white;border-radius:50%;box-shadow:0 0 0 4px var(--light)}
+.cta{background:linear-gradient(135deg,#0ABF7A,#0A1931);color:white;border-radius:24px;padding:50px;text-align:center;margin-top:30px}
+footer{background:#0A1931;color:#94a3b8;padding:50px 6%;text-align:center}
+.access-toolbar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:white;border:1px solid #e2e8f0;border-radius:100px;padding:8px 12px;box-shadow:0 10px 30px rgba(0,0,0,0.15);display:flex;gap:8px;z-index:9999}
+.access-toolbar button{border:none;background:#F1F5F9;padding:8px 14px;border-radius:100px;font-weight:600;cursor:pointer;font-size:0.85em}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero h1{font-size:2.2em}nav{display:none}}
+body.large{font-size:1.15em} body.high{filter:contrast(1.25)}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">Gelombang<span>Visual</span>.id</div>
+<nav>
+<a href="#masalah">Masalah</a>
+<a href="#abd">ABD</a>
+<a href="#solusi">Solusi</a>
+<a href="#kode">Kode</a>
+<a href="#aksi">Aksi</a>
+</nav>
+</header>
+
+<div class="hero">
+<div>
+<h1>Menerjemahkan <em>Gelombang</em> ke <em>Visual</em></h1>
+<p>Website aksesibel bukan soal membuat suara lebih keras. Tapi mengubah suara menjadi sesuatu yang bisa dilihat, dibaca, dan dipahami oleh Teman Tuli pengguna Alat Bantu Dengar.</p>
+<div class="badges">
+<span class="badge">♿ WCAG 2.2 AA</span>
+<span class="badge">🦻 Hearing Aid Friendly</span>
+<span class="badge">CC Subtitle Wajib</span>
+<span class="badge">BISINDO</span>
+</div>
+<a href="#solusi" class="btn">Lihat Solusi Web →</a>
+<a href="#kode" class="btn sec">Lihat Kode</a>
+</div>
+<div class="hero-visual">
+<h3>Gelombang → Visual Translation</h3>
+<div class="wave">
+<div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+</div>
+<p style="color:#cbd5e1;font-size:0.9em">Gelombang Suara</p>
+<p style="color:white;margin:15px 0">↓</p>
+<div style="background:white;color:#0A1931;padding:12px;border-radius:10px;font-weight:700">[CC] Halo, ini adalah teks yang bisa dibaca</div>
+<p style="margin-top:15px;color:#93c5fd">Untuk pengguna ABD, visual adalah kepastian.</p>
+</div>
+</div>
+
+<section id="masalah">
+<h2 class="section-title">Kenapa Web Belum Inklusif?</h2>
+<p class="sub">ABD membantu mendengar, tapi tidak menghilangkan hambatan digital jika website audio-centric.</p>
+<div class="grid3">
+<div class="card challenge"><div class="icon">🔇</div><h3>Video Tanpa Teks</h3><p>90% tutorial & konten edukasi tidak ada Closed Caption. Suara tidak jelas = informasi hilang.</p></div>
+<div class="card challenge"><div class="icon">🔔</div><h3>Notifikasi Hanya Bunyi</h3><p>Error cuma beep, chat cuma ding. Tidak ada banner visual.</p></div>
+<div class="card challenge"><div class="icon">📞</div><h3>Layanan Telepon Only</h3><p>Daftar RS & CS hanya via telepon. Harus ada alternatif teks.</p></div>
+</div>
+</section>
+
+<section id="abd" style="background:#F8FAFF">
+<h2 class="section-title">Mengenal Alat Bantu Dengar (ABD)</h2>
+<div class="grid3">
+<div class="card"><div class="icon">👂</div><h3>Apa itu ABD?</h3><p>Alat kecil yang memperkeras suara sesuai frekuensi hilang. Bukan mengembalikan 100% normal.</p></div>
+<div class="card"><div class="icon">⚙️</div><h3>Jenis-Jenis</h3><p><strong>BTE:</strong> Belakang telinga<br><strong>ITE:</strong> Dalam telinga<br><strong>CI:</strong> Cochlear Implant</p></div>
+<div class="card" style="border:2px solid #185ADB"><div class="icon" style="background:#185ADB;color:white">💡</div><h3>Implikasi untuk Web</h3><p>Autoplay keras & audio distorsi menyebabkan feedback menyakitkan di ABD. Beri kontrol volume & selalu sediakan teks.</p></div>
+</div>
+</section>
+
+<section id="solusi">
+<h2 class="section-title">5 Pilar Web Inklusif untuk Pengguna ABD</h2>
+<div class="grid3">
+<div class="card"><div class="icon">💬</div><h3>1. Caption Wajib Akurat</h3><p>Harus ada label pembicara & efek suara: [Musik Sedih] [Tawa]</p></div>
+<div class="card"><div class="icon">📝</div><h3>2. Transkrip Lengkap</h3><p>Di bawah video, sediakan transkrip yang bisa di-search & di-copy.</p></div>
+<div class="card"><div class="icon">🎚️</div><h3>3. Kontrol Penuh</h3><p>Volume, kecepatan 0.75x-2x, mute, CC on/off via keyboard.</p></div>
+<div class="card"><div class="icon">👁️</div><h3>4. Visual Gantikan Audio</h3><p>Error pakai kotak merah + ikon, bukan hanya beep.</p></div>
+<div class="card"><div class="icon">🤟</div><h3>5. Kompatibel & BISINDO</h3><p>Sediakan video JBI overlay di pojok kanan bawah.</p></div>
+</div>
+
+<div class="demo-player" id="kode">
+<div class="demo-top"><span>● ● ● video-player-aksesibel.html</span><span>CC: ID ON</span></div>
+<div class="demo-body"><div style="font-size:3em">▶️</div><p>Tutorial Aksesibilitas Web Inklusif</p><div class="cc-bubble">[Dr. Sinta]: Hari ini kita belajar menerjemahkan gelombang suara...</div></div>
+</div>
+<div class="code-box">
+&lt;video controls&gt;<br>
+&nbsp;&nbsp;&lt;source src="tutorial.mp4" type="video/mp4" /&gt;<br>
+&nbsp;&nbsp;&lt;track kind="captions" srclang="id" label="Indonesia (CC)" src="captions-id.vtt" default /&gt;<br>
+&lt;/video&gt;<br>
+&lt;details&gt;<br>
+&nbsp;&nbsp;&lt;summary&gt;Lihat Transkrip Lengkap&lt;/summary&gt;<br>
+&nbsp;&nbsp;&lt;p&gt;[00:00] Halo...&lt;/p&gt;<br>
+&lt;/details&gt;
+</div>
+</section>
+
+<section id="aksi">
+<h2 class="section-title">Checklist Cepat Developer</h2>
+<div class="timeline">
+<div class="tl-item"><strong>Tes Mute 100%</strong><br>Matikan suara, jelajahi web 15 menit. Masih paham semua?</div>
+<div class="tl-item"><strong>Jangan Telepon Only</strong><br>Ganti jadi SMS / WA Teks / Email OTP + Live Chat.</div>
+<div class="tl-item"><strong>Anggarkan JBI</strong><br>JBI adalah kebutuhan wajib, bukan opsional.</div>
+</div>
+<div class="cta">
+<h2>ABD Membantu Mendengar.<br>Desain Inklusif Membantu Memahami.</h2>
+<p style="margin-top:15px">Mulai hari ini: aktifkan subtitle di semua videomu.</p>
+<a href="#" class="btn" style="margin-top:25px" onclick="alert('Terima kasih! Kamu sudah membuka akses untuk 2.5 juta teman Tuli.')">Saya Siap Bikin Web Inklusif →</a>
+</div>
+</section>
+
+<footer>
+<p><strong>GelombangVisual.id — Menerjemahkan Gelombang ke Visual</strong></p>
+<p>Edukasi Aksesibilitas Web Inklusif • Malang, 2026</p>
+</footer>
+
+<div class="access-toolbar">
+<button onclick="document.body.classList.toggle('large')">A+ Besar</button>
+<button onclick="document.body.classList.toggle('high')">Kontras</button>
+<button onclick="alert('Semua video ada CC Indonesia')">CC Aktif</button>
+<button onclick="alert('Butuh JBI? WA Teks: 0812-XXXX-XXXX')" style="background:#0ABF7A;color:white">BISINDO JBI</button>
+</div>
+</body>
+</html>
